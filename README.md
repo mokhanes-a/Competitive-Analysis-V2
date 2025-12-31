@@ -62,6 +62,15 @@ An AI-powered competitive analysis tool that:
 | **Runtime** | Node.js with TypeScript | Type-safe development environment |
 | **Interface** | CLI (Command Line Interface) | Efficient Interaction |
 
+### AI Models
+
+| Model / Tool Name | Purpose | Free Trial |
+|------------|---------|------------|
+| **Gemini 2.5 Flash** | Fast multi-modal processing, vision + text analysis | ✅ Yes |
+| **Gemini 2.5 Pro** | Advanced reasoning and analysis | ✅ Yes |
+| **SerpApi** | Web search capabilities | ✅ Yes |
+| **MCP - `websearchGrounding`** | Google Vertex web search | ⚠️ Requires credentials |
+
 
 ---
 
