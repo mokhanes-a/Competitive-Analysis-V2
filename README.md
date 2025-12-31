@@ -81,15 +81,11 @@ graph TD
     
     F --> G[Market Analysis<br/>Calculate Min/Avg/Max Prices]
     
-    G --> H[LLM Analysis Engine<br/>Generate Insights]
+    G --> H[LLM Analysis<br/>Generate Insights]
     
-    H --> I[CLI Output:<br/>Prices • Metrics • Recommendations]
+    H --> I[CLI Output:<br/>Prices, Metrics, Recommendations]
     
-    style A fill:#e1f5ff
-    style C fill:#fff4e1
-    style E fill:#ffe1f5
-    style H fill:#e1ffe1
-    style I fill:#ffe1e1
+
 ```
 
 ---
@@ -99,31 +95,27 @@ graph TD
 ### Stage 1: Input Processing
 **Input Options:**
 - Product image (JPG, PNG)
-- Product name (text string)
-- Product specifications (JSON/text)
+- Product name (Text)
+- Product specifications (Text)
 
 **Process:**
-1. If image provided → Send to AI vision model via NeuroLink
+1. If image provided → Send to AI vision model(Gemini-2.5-flash) via NeuroLink
 2. Extract product name, brand, model, key features
 3. Combine with user-provided text inputs
-4. Form comprehensive search query
+4. Form a web search query
 
 ### Stage 2: Web Search & Data Collection
-**Process:**
+
 1. Execute web search using MCP integration in NeuroLink
-2. Query multiple e-commerce platforms:
-   - Amazon
-   - Flipkart
-   - Other merchant sites
-3. Collect product listings with:
+2. Collect data from multiple e-commerce platforms:
+3. Collect and listings products with:
    - Website name
    - Product price
    - Product description
    - Product condition (new/refurbished)
 
 ### Stage 3: Product Matching & Filtering
-**Process:**
-1. Apply intelligent filtering to match exact products
+1. Apply filtering to match exact products
 2. Eliminate irrelevant or mismatched results
 3. Categorize products:
    - **New products** (primary category)
@@ -141,7 +133,7 @@ graph TD
 - Collected market data
 - Merchant's product price
 - Merchant's website name
-- Product category and market segment
+
 
 **AI Analysis:**
 - Compare merchant pricing vs. market
@@ -149,7 +141,6 @@ graph TD
 - Generate specific actionable recommendations:
   - Pricing adjustments
   - Marketing strategies
-  - Inventory decisions
   - Competitive positioning
 
 ### Stage 6: CLI Output
@@ -158,25 +149,24 @@ graph TD
 === Competitive Analysis Report ===
 
 Product: [Identified Product Name]
-Your Price: $X.XX on [Your Website]
+Your Price: ₹X,XXX on [Your Website]
 
 ╔═══════════════════════════════════════════════════╗
 ║              MARKET PRICE ANALYSIS                ║
 ╚═══════════════════════════════════════════════════╝
 
-Lowest Price:  $X.XX  (Platform Name)
-Average Price: $X.XX
-Highest Price: $X.XX  (Platform Name)
+Lowest Price:  ₹X,XXX  (Platform Name)
+Average Price: ₹X,XXX
+Highest Price: ₹X,XXX  (Platform Name)
 
 ╔═══════════════════════════════════════════════════╗
 ║           COMPETITOR PRICING BREAKDOWN            ║
 ╚═══════════════════════════════════════════════════╝
 
-1. Amazon      - $X.XX (New)
-2. Flipkart    - $X.XX (New)
-3. eBay        - $X.XX (Refurbished) *
+1. Amazon      - ₹X,XXX (New)
+2. Flipkart    - ₹X,XXX (New)
+3. eBay        - ₹X,XXX (Refurbished) *
 
-* Refurbished products listed separately
 
 ╔═══════════════════════════════════════════════════╗
 ║         ACTIONABLE RECOMMENDATIONS                ║
@@ -198,67 +188,6 @@ Highest Price: $X.XX  (Platform Name)
 
 ---
 
-## 🚀 Getting Started
-
-### Prerequisites
-
-- **Node.js** v18 or higher
-- **pnpm** package manager
-- **API Keys**:
-  - Google AI API Key / OpenAI API Key
-  - MCP-compatible search API credentials
-
-### Installation
-
-```bash
-# Clone the repository
-git clone <repository-url>
-cd "Competitive Analysis V2"
-
-# Install dependencies
-pnpm install
-
-# Configure environment
-cp .env.example .env
-# Edit .env with your API keys
-```
-
-### Configuration
-
-Create a `.env` file:
-
-```env
-# AI Provider Configuration
-DEFAULT_PROVIDER="google-ai"
-GOOGLE_AI_API_KEY="your-google-ai-api-key"
-GOOGLE_AI_MODEL="gemini-2.0-flash-exp"
-
-# Search API Configuration
-SERPAPI_API_KEY="your-serpapi-key"
-
-# Optional: Additional providers
-OPENAI_API_KEY="your-openai-key"
-ANTHROPIC_API_KEY="your-anthropic-key"
-```
-
-### Usage
-
-```bash
-# Run the CLI tool
-pnpm tsx main.ts
-
-# With image input
-pnpm tsx main.ts --image product.jpg
-
-# With product name
-pnpm tsx main.ts --product "iPhone 15 Pro Max 256GB"
-
-# With specifications
-pnpm tsx main.ts --specs "specs.json"
-```
-
----
-
 ## � Business Value
 
 ### For Merchants
@@ -274,114 +203,3 @@ pnpm tsx main.ts --specs "specs.json"
 - **Scalability**: Analyze unlimited products without additional effort
 
 ---
-
-## 🗺️ Implementation Roadmap
-
-### Phase 1: MVP (Weeks 1-2)
-- ✅ Basic CLI interface
-- ✅ Text-based product search
-- ✅ Web search integration via MCP
-- ✅ Simple price comparison output
-
-### Phase 2: AI Enhancement (Weeks 3-4)
-- ✅ Image input processing
-- ✅ Multi-modal AI integration
-- ✅ Advanced product matching
-- ✅ AI-powered recommendations
-
-### Phase 3: Market Analysis (Weeks 5-6)
-- ✅ Statistical analysis (min/avg/max)
-- ✅ Refurbished product detection
-- ✅ Competitive positioning insights
-- ✅ Formatted CLI reports
-
-### Phase 4: Production Ready (Weeks 7-8)
-- 🔄 Error handling and logging
-- 🔄 Performance optimization
-- 🔄 Comprehensive testing
-- 🔄 Documentation and deployment
-
----
-
-## 📁 Project Structure
-
-```
-Competitive Analysis V2/
-├── src/
-│   ├── cli/                # CLI interface and argument parsing
-│   ├── services/
-│   │   ├── vision.ts       # Image analysis service
-│   │   ├── search.ts       # Web search via MCP
-│   │   ├── matcher.ts      # Product matching logic
-│   │   └── analyzer.ts     # Market analysis engine
-│   ├── models/
-│   │   └── types.ts        # TypeScript type definitions
-│   └── utils/
-│       ├── formatter.ts    # Output formatting
-│       └── logger.ts       # Logging utilities
-├── main.ts                 # Application entry point
-├── .env                    # Environment configuration
-├── package.json            # Dependencies and scripts
-├── tsconfig.json           # TypeScript configuration
-└── README.md              # This file
-```
-
----
-
-## 🔐 Security & Best Practices
-
-- 🔒 API keys stored in environment variables, never committed to version control
-- 🛡️ Input validation and sanitization
-- 📊 Rate limiting for API calls
-- 🔍 Data privacy compliance
-- ✅ Error handling and graceful degradation
-
----
-
-## 📈 Future Enhancements
-
-- **Multi-Language Support**: Analyze international markets
-- **Historical Tracking**: Price trends over time
-- **API Integration**: REST API for web dashboard integration
-- **Advanced Analytics**: Predictive pricing recommendations
-- **Batch Processing**: Analyze entire product catalogs
-- **Alert System**: Notify merchants of significant price changes
-- **Export Options**: Generate PDF/Excel reports
-
----
-
-## 🤝 Contributing
-
-Contributions are welcome! Please follow these steps:
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
----
-
-## 📄 License
-
-ISC License - See LICENSE file for details
-
----
-
-## 📞 Contact & Support
-
-For questions, issues, or feature requests:
-- Open an issue in the repository
-- Contact the development team
-- Review the [NeuroLink documentation](https://github.com/juspay/neurolink)
-
----
-
-## 🙏 Acknowledgments
-
-- **NeuroLink Team** at Juspay for the powerful AI framework
-- **MCP Community** for standardized AI tool integration
-- **AI Provider Partners** (Google, OpenAI, Anthropic)
-
----
-
-**Note**: This project requires valid API keys to function. Ensure all credentials are configured in your `.env` file before running the application.
