@@ -1,24 +1,23 @@
-# E-Commerce Competitive Analysis Tool
+# Competitive Analysis Tool
 
-> **AI-Powered Market Intelligence CLI for Merchant Success**
+> **AI-Powered Market Intelligence CLI Tool**
 
-A powerful command-line competitive analysis tool built with **NeuroLink** by Juspay, designed to help e-commerce merchants make data-driven pricing decisions through automated market research and intelligent recommendations.
+A powerful command-line competitive analysis tool built with **NeuroLink**, designed to help merchants make data-driven pricing decisions through automated market research and intelligent recommendations.
 
 ---
 
 ## 📋 Executive Summary
 
-This project provides an intelligent CLI tool that empowers e-commerce merchants to understand their competitive positioning in real-time. By accepting product images, names, or specifications as input, the system analyzes the market landscape and delivers actionable insights including competitor pricing, market trends, and strategic recommendations to increase order volume and revenue.
+This project provides an intelligent CLI tool that empowers merchants to understand their competitive positioning in real-time. By accepting product images, names, or specifications as input, the system analyzes the market landscape and delivers actionable insights including competitor pricing, market trends, and strategic recommendations to increase order volume and revenue.
 
 ### Problem Statement
 
-E-commerce merchants face several challenges:
 - **Manual price research** is time-consuming and inefficient
 - **Lack of real-time market intelligence** leads to missed opportunities
 - **Difficulty identifying optimal pricing strategies** results in lost sales
 - **No unified view** of competitor landscape across multiple platforms
 
-### Our Solution
+### Solution
 
 An AI-powered competitive analysis tool that:
 - ✅ Accepts multiple input formats (images, product names, specifications)
@@ -26,16 +25,16 @@ An AI-powered competitive analysis tool that:
 - ✅ Gathers real-time pricing data from multiple e-commerce platforms
 - ✅ Analyzes market positioning with lowest, average, and highest price metrics
 - ✅ Identifies refurbished products separately for accurate comparison
-- ✅ Generates actionable business recommendations tailored to merchant needs
+- ✅ Generates actionable business recommendations
 
 ---
 
 ## 🎯 Key Features
 
 ### Multi-Modal Input Processing
-- **Product Images**: AI-powered image analysis to identify products from photos
-- **Product Names**: Direct text-based product search
-- **Product Specifications**: Detailed spec-based matching for accurate results
+- **Product Image**: AI-powered image analysis to identify products from Image
+- **Product Name**: Direct text-based product search
+- **Product Specification**: Detailed spec-based matching for accurate results
 
 ### Intelligent Market Analysis
 - **Real-time Price Discovery**: Fetch current prices from multiple online marketplaces
@@ -56,21 +55,13 @@ An AI-powered competitive analysis tool that:
 
 | Component | Technology | Purpose |
 |-----------|-----------|---------|
-| **AI Framework** | [NeuroLink](https://github.com/juspay/neurolink) by Juspay | Universal AI platform with MCP server integration |
+| **AI Framework** | [NeuroLink](https://github.com/juspay/neurolink) | Universal AI platform with MCP server integration |
 | **LLM Provider** | Google Gemini / OpenAI / Anthropic | Language model for reasoning and recommendations |
 | **Vision AI** | Multi-modal LLM (Gemini Vision) | Image analysis and product identification |
-| **Web Search** | MCP (Model Context Protocol) | Real-time web search capabilities |
+| **Web Search** | MCP (Model Context Protocol) / Web Search API | Real-time web search capabilities |
 | **Runtime** | Node.js with TypeScript | Type-safe development environment |
-| **Interface** | CLI (Command Line Interface) | Efficient merchant interaction |
+| **Interface** | CLI (Command Line Interface) | Efficient Interaction |
 
-### Why NeuroLink?
-
-[NeuroLink](https://github.com/juspay/neurolink) is a universal AI development platform that provides:
-- **Multi-Provider Support**: Seamless integration with Google AI, OpenAI, Anthropic, and more
-- **MCP Integration**: Built-in Model Context Protocol for web search and tool usage
-- **Professional CLI**: Production-ready command-line interface
-- **Type Safety**: Full TypeScript support for robust development
-- **Tool Integration**: Easy connection to external APIs and services
 
 ---
 
@@ -78,57 +69,27 @@ An AI-powered competitive analysis tool that:
 
 ```mermaid
 graph TD
-    A[User Input] --> B{Input Type?}
-    B -->|Image| C[AI Vision Model]
-    B -->|Product Name| D[Search Query Formation]
-    B -->|Product Spec| D
+    A[User Input:<br/>Image/Name/Spec] --> B{Image<br/>Provided?}
     
-    C -->|Product Identification| E[Extract Product Name & Details]
-    E --> D
+    B -->|Yes| C[AI Vision Model<br/>Extract Product Details]
+    B -->|No| D[Search Query Formation]
+    C --> D
     
-    D --> F[Combined Search Query]
-    F --> G[Web Search via MCP]
+    D --> E[Web Search via MCP<br/>Multiple E-commerce Sites]
     
-    G --> H[Raw Search Results]
-    H --> I[Product Matching & Filtering]
+    E --> F[Product Matching & Filtering<br/>Separate New vs Refurbished]
     
-    I --> J[Filtered Product Data]
-    J --> K{Product Category}
+    F --> G[Market Analysis<br/>Calculate Min/Avg/Max Prices]
     
-    K -->|New Products| L[Primary Analysis Dataset]
-    K -->|Refurbished| M[Secondary Analysis Dataset]
+    G --> H[LLM Analysis Engine<br/>Generate Insights]
     
-    L --> N[Market Analysis]
-    M --> N
-    
-    N --> O[Calculate Metrics]
-    O --> P[Lowest Price]
-    O --> Q[Average Price]
-    O --> R[Highest Price]
-    
-    P --> S[Structured Market Data]
-    Q --> S
-    R --> S
-    M --> S
-    
-    S --> T[LLM Analysis Engine]
-    T --> U[Generate Insights]
-    
-    U --> V[Actionable Recommendations]
-    V --> W[CLI Output]
-    
-    W --> X{Output Contains}
-    X --> Y[Competitor Prices by Platform]
-    X --> Z[Market Metrics]
-    X --> AA[Refurbished Options]
-    X --> AB[Strategic Actions]
+    H --> I[CLI Output:<br/>Prices • Metrics • Recommendations]
     
     style A fill:#e1f5ff
     style C fill:#fff4e1
-    style G fill:#ffe1f5
-    style T fill:#e1ffe1
-    style W fill:#f0f0f0
-    style AB fill:#ffe1e1
+    style E fill:#ffe1f5
+    style H fill:#e1ffe1
+    style I fill:#ffe1e1
 ```
 
 ---
