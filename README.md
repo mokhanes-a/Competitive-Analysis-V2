@@ -8,7 +8,7 @@ A powerful command-line competitive analysis tool built with **NeuroLink**, desi
 
 ## 📋 Executive Summary
 
-This project provides an intelligent CLI tool that empowers merchants to understand their competitive positioning in real-time. By accepting product images, names, or specifications as input, the system analyzes the market landscape and delivers actionable insights including competitor pricing, market trends, and strategic recommendations to increase order volume and revenue.
+An intelligent CLI tool that analyzes competitive positioning in real-time. Input product images, names, or specifications—the system delivers actionable insights on competitor pricing, market trends, and strategic recommendations to boost order volume and revenue.
 
 ### Problem Statement
 
@@ -49,6 +49,32 @@ An AI-powered competitive analysis tool that:
 
 ---
 
+
+## 🔄 High-Level Workflow
+
+```mermaid
+graph TD
+    A[User Input: Image/Name/Spec] --> B{Image Provided?}
+    
+    B -->|Yes| C[AI Vision Model - Extract Product Details]
+    B -->|No| D[Search Query Formation]
+    C --> D
+    
+    D --> E[Web Search via MCP - Multiple E-commerce Sites]
+    
+    E --> F[Product Matching & Filtering - Separate New vs Refurbished]
+    
+    F --> G[Market Analysis - Calculate Min/Avg/Max Prices]
+    
+    G --> H[LLM Analysis - Generate Insights]
+    
+    H --> I[CLI Output: Prices, Metrics, Recommendations]
+    
+
+```
+
+---
+
 ## 🏗️ Technical Architecture
 
 ### Technology Stack
@@ -71,31 +97,6 @@ An AI-powered competitive analysis tool that:
 | **SerpApi** | Web search capabilities | ✅ Yes |
 | **MCP - `websearchGrounding`** | Google Vertex web search | ⚠️ Requires credentials |
 
-
----
-
-## 🔄 High-Level Workflow
-
-```mermaid
-graph TD
-    A[User Input:<br/>Image/Name/Spec] --> B{Image<br/>Provided?}
-    
-    B -->|Yes| C[AI Vision Model<br/>Extract Product Details]
-    B -->|No| D[Search Query Formation]
-    C --> D
-    
-    D --> E[Web Search via MCP<br/>Multiple E-commerce Sites]
-    
-    E --> F[Product Matching & Filtering<br/>Separate New vs Refurbished]
-    
-    F --> G[Market Analysis<br/>Calculate Min/Avg/Max Prices]
-    
-    G --> H[LLM Analysis<br/>Generate Insights]
-    
-    H --> I[CLI Output:<br/>Prices, Metrics, Recommendations]
-    
-
-```
 
 ---
 
